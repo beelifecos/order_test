@@ -14,7 +14,7 @@ BASE_URL = "https://www.beelifecos.com/beelifecos_admin.php"
 ORDER_URL = BASE_URL + "?dispatch=orders.print_invoice&order_id={}"
 USERNAME = "beelifecos@gmail.com"
 PASSWORD = "beelifecos140512"
-ORDER_IDS = [3850,3852,3854]  # список заказов
+ORDER_IDS = [3847,3853]  # список заказов
 
 desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
 orders_path = os.path.join(desktop_path, "orders")
