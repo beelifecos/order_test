@@ -3,7 +3,7 @@ name: Run parser every 2 hours
 on:
   schedule:
     - cron: "0 */2 * * *"  # каждые 2 часа по UTC
-  workflow_dispatch:  # возможность запустить вручную
+  workflow_dispatch:
 
 jobs:
   build:
@@ -26,12 +26,12 @@ jobs:
           pip install requests
           pip install beautifulsoup4
           pip install openpyxl
+          pip install pydrive2  # новая версия PyDrive
 
       - name: Set up Chrome for Selenium
         run: |
           sudo apt update
           sudo apt install -y chromium-browser
-          echo "Chrome installed"
 
       - name: Run parser script
         env:
