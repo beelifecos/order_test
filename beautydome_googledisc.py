@@ -376,6 +376,22 @@ def login_and_scrape(username, password):
 
     driver.quit()
 
+    from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
+from webdriver_manager.chrome import ChromeDriverManager
+import tempfile
+
+user_data_dir = tempfile.mkdtemp()
+options = Options()
+options.add_argument("--headless")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument(f"--user-data-dir={user_data_dir}")
+
+service = Service(ChromeDriverManager().install())
+driver = webdriver.Chrome(service=service, options=options)
+
     # ---------------- Сохранение и загрузка на Google Drive -----------------
     file_path = f"beautydome.xlsx"
     wb.save(file_path)
