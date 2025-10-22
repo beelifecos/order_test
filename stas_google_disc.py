@@ -13,6 +13,10 @@ from pydrive.drive import GoogleDrive
 import os
 import os
 import pickle
+import tempfile
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 # --- Функция для распределения по категориям ---
 def assign_category(name):
     if not name:
@@ -510,10 +514,7 @@ def handle_alert(driver):
 
 # --- Основная функция скрапинга ---
 def login_and_scrape(username, password):
-import tempfile
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
-from webdriver_manager.chrome import ChromeDriverManager
+
 
 options = Options()
 options.add_argument("--headless=new")      # работа без GUI
