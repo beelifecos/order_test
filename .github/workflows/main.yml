@@ -25,6 +25,15 @@ jobs:
           pip install webdriver-manager
           pip install requests
           pip install beautifulsoup4
+          pip install openpyxl
+
+      - name: Set up Chrome for Selenium
+        run: |
+          sudo apt update
+          sudo apt install -y chromium-browser
+          echo "Chrome installed"
 
       - name: Run parser script
+        env:
+          CHROME_BIN: /usr/bin/chromium-browser
         run: python stas_google_disc.py
