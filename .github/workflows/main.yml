@@ -26,7 +26,8 @@ jobs:
           pip install requests
           pip install beautifulsoup4
           pip install openpyxl
-          pip install pydrive2  # новая версия PyDrive
+          pip install pydrive
+          pip install pydrive2
 
       - name: Set up Chrome for Selenium
         run: |
