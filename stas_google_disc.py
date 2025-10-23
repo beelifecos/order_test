@@ -516,12 +516,12 @@ def handle_alert(driver):
 def login_and_scrape(username, password):
 
 
-options = Options()
-options.add_argument("--headless=new")      # работа без GUI
-options.add_argument("--no-sandbox")        # нужно для GitHub Actions
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--disable-notifications")
-options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")  # уникальный профиль для сессии
+    options = Options()
+    options.add_argument("--headless=new")      # работа без GUI
+    options.add_argument("--no-sandbox")        # нужно для GitHub Actions
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--disable-notifications")
+    options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")  # уникальный профиль для сессии
 
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=options)
