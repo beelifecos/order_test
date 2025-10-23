@@ -521,8 +521,8 @@ def login_and_scrape(username, password):
     options.add_argument("--disable-notifications")
     options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")  # уникальный профиль для сессии
 
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=service, options=options)
+    service = Service(ChromeDriverManager().install())
+    driver = webdriver.Chrome(service=service, options=options)
 
 
     driver.get("https://wholesale.stylekorean.com/Member/SignIn")
