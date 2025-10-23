@@ -28,4 +28,5 @@ jobs:
         env:
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_AUTH_TOKEN: ${{ secrets.GOOGLE_AUTH_TOKEN }}
-        run: python parser.py
+        run: python stas_google_disc.py
+
