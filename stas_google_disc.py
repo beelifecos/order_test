@@ -514,8 +514,6 @@ def handle_alert(driver):
 
 # --- Основная функция скрапинга ---
 def login_and_scrape(username, password):
-
-
     options = Options()
     options.add_argument("--headless=new")      # работа без GUI
     options.add_argument("--no-sandbox")        # нужно для GitHub Actions
