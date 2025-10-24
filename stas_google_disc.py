@@ -527,8 +527,13 @@ def login_and_scrape(username, password):
     driver.get("https://wholesale.stylekorean.com/Member/SignIn")
     handle_alert(driver)
 
+    # ждём, пока поле для ID станет видимым
+    WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.ID, "user_id")))
     driver.find_element(By.ID, "user_id").send_keys(username)
     driver.find_element(By.ID, "pwd").send_keys(password)
+
+    # ждём, пока кнопка станет кликабельной
+    WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.CSS_SELECTOR, ".Btn_Login[type='submit']")))
     driver.find_element(By.CSS_SELECTOR, ".Btn_Login[type='submit']").click()
     handle_alert(driver)
 
