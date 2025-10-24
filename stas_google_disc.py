@@ -512,13 +512,13 @@ def handle_alert(driver):
 
 # --- Основная функция скрапинга ---
 def login_and_scrape(username, password):
-options = Options()
-options.add_argument("--headless=new")  # современный headless
-options.add_argument("--disable-gpu")
-options.add_argument("--no-sandbox")
-options.add_argument("--disable-dev-shm-usage")
-options.add_argument("--window-size=1920,1080")
-options.add_argument("--disable-notifications")
+    options = Options()
+    options.add_argument("--headless=new")  # современный headless
+    options.add_argument("--disable-gpu")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--window-size=1920,1080")
+    options.add_argument("--disable-notifications")
 
 
     service = Service(ChromeDriverManager().install())
