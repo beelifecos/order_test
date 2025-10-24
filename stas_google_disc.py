@@ -512,18 +512,17 @@ def handle_alert(driver):
     except:
         pass
 
-# --- Основная функция скрапинга ---
 def login_and_scrape(username, password):
+    import tempfile  # обязательно добавить
     options = Options()
-    options.add_argument("--headless=new")      # работа без GUI
-    options.add_argument("--no-sandbox")        # нужно для GitHub Actions
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--disable-notifications")
-    options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")  # уникальный профиль для сессии
+    options.add_argument(f"--user-data-dir={tempfile.mkdtemp()}")
 
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
-
 
     driver.get("https://wholesale.stylekorean.com/Member/SignIn")
     handle_alert(driver)
