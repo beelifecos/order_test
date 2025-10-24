@@ -3,6 +3,7 @@ name: Run StyleKorean Parser
 on:
   schedule:
     - cron: '0 0 * * *'   # каждый день в 09:00 по Сеулу (UTC+9)
+    - cron: '0 12 * * *'  # каждый день в 21:00 по Сеулу
   workflow_dispatch:
 
 jobs:
@@ -25,7 +26,7 @@ jobs:
 
       - name: Create client_secrets.json
         run: |
-          echo "${{ secrets.GOOGLE_CLIENT_SECRET }}" > client_secrets.json
+          echo '${{ secrets.GOOGLE_CLIENT_SECRET }}' > client_secrets.json
 
       - name: Run parser
         env:
