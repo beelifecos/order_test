@@ -10,7 +10,9 @@ from openpyxl import Workbook
 from bs4 import BeautifulSoup
 from pydrive2.auth import GoogleAuth
 from pydrive2.drive import GoogleDrive
-import os
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 import os
 import pickle
 # --- Функция для распределения по категориям ---
@@ -512,6 +514,13 @@ def handle_alert(driver):
 def login_and_scrape(username, password):
     options = Options()
     options.add_argument('--disable-notifications')
+    options.add_argument('--headless')  # для GitHub Actions
+    options.add_argument('--no-sandbox')
+    options.add_argument('--disable-dev-shm-usage')
+    options.add_argument('--disable-gpu')
+    options.add_argument('--window-size=1920,1080')
+    options.add_argument('--user-data-dir=/tmp/selenium_unique')  # уникальный временный каталог
+
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
 
@@ -522,6 +531,9 @@ def login_and_scrape(username, password):
     driver.find_element(By.ID, "pwd").send_keys(password)
     driver.find_element(By.CSS_SELECTOR, ".Btn_Login[type='submit']").click()
     handle_alert(driver)
+
+    # дальше код как у тебя…
+
 
     wb = Workbook()
     ws = wb.active
