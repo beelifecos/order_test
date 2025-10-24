@@ -8,8 +8,8 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from openpyxl import Workbook
 from bs4 import BeautifulSoup
-from pydrive.auth import GoogleAuth
-from pydrive.drive import GoogleDrive
+from pydrive2.auth import GoogleAuth
+from pydrive2.drive import GoogleDrive
 import os
 import os
 import pickle
