@@ -532,7 +532,7 @@ def login_and_scrape(username, password):
         "User group", "Особенности", "Старая цена KRW","status","category","procent"
     ])
 
-    file_path = '/Users/tyantamara/parser_stas_final_1.xlsx'
+    file_path = '/Users/tyantamara/parser_stas_final_2.xlsx'
 
     # --- Google Drive ---
     gauth = GoogleAuth()
