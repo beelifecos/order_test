@@ -504,7 +504,7 @@ def extract_brand_name(brand_url):
 
 def handle_alert(driver):
     try:
-        WebDriverWait(driver, 3).until(EC.alert_is_present())
+        WebDriverWait(driver, 15).until(EC.alert_is_present())
         alert = driver.switch_to.alert
         alert.accept()
     except:
@@ -512,14 +512,14 @@ def handle_alert(driver):
 
 # --- Основная функция скрапинга ---
 def login_and_scrape(username, password):
-    options = Options()
-    options.add_argument('--disable-notifications')
-    options.add_argument('--headless')  # для GitHub Actions
-    options.add_argument('--no-sandbox')
-    options.add_argument('--disable-dev-shm-usage')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--window-size=1920,1080')
-    options.add_argument('--user-data-dir=/tmp/selenium_unique')  # уникальный временный каталог
+options = Options()
+options.add_argument("--headless=new")  # современный headless
+options.add_argument("--disable-gpu")
+options.add_argument("--no-sandbox")
+options.add_argument("--disable-dev-shm-usage")
+options.add_argument("--window-size=1920,1080")
+options.add_argument("--disable-notifications")
+
 
     service = Service(ChromeDriverManager().install())
     driver = webdriver.Chrome(service=service, options=options)
@@ -918,9 +918,10 @@ def login_and_scrape(username, password):
         brand_name = extract_brand_name(brand_url)
         print(f"Scraping products for brand: {brand_name}")
 
+        
         driver.get(brand_url)
         handle_alert(driver)
-        WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CLASS_NAME, "album")))
+        WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME, "album")))
 
         page_links = driver.find_elements(By.CLASS_NAME, "page-link")
         num_pages = len(page_links) if page_links else 1
@@ -932,7 +933,7 @@ def login_and_scrape(username, password):
 
         for page_num in range(1, num_pages + 1):
             handle_alert(driver)
-            WebDriverWait(driver, 1).until(EC.presence_of_element_located((By.CLASS_NAME, "album")))
+            WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CLASS_NAME, "album")))
             soup = BeautifulSoup(driver.page_source, 'html.parser')
 
             product_cards = soup.find_all("div", class_="card mb-4 shadow-sm")
