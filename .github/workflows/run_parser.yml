@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install selenium webdriver-manager openpyxl beautifulsoup4 pydrive
+          pip install selenium webdriver-manager openpyxl beautifulsoup4 pydrive pydrive2
 
       - name: Run parser
         env:
