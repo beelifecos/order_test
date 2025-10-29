@@ -1,0 +1,32 @@
+name: Scheduled parser
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 * * *' # каждый день в 03:00 UTC
+
+jobs:
+  run-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          python -m playwright install --with-deps
+
+      - name: Save client_secrets.json
+        run: echo '${{ secrets.GOOGLE_CREDENTIALS }}' > client_secrets.json
+
+      - name: Run parser
+        env:
+          SITE_USER: ${{ secrets.SITE_USER }}
+          SITE_PASS: ${{ secrets.SITE_PASS }}
+        run: python parser_drive.py
