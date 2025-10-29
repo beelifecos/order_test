@@ -1,5 +1,6 @@
 pydrive
 selenium
+webdriver-manager
 openpyxl
 pandas
 requests
