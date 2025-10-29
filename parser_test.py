@@ -113,8 +113,14 @@ def login_and_scrape(username, password):
     file_path = 'C:/Users/beeli/Downloads/parser_stas_final_1.xlsx'
 
     # --- Google Drive ---
+    from pydrive.auth import ServiceAccountCredentials
+    from pydrive.drive import GoogleDrive
+
+    scope = ['https://www.googleapis.com/auth/drive']
     gauth = GoogleAuth()
-    gauth.LocalWebserverAuth()
+    gauth.LoadCredentialsFile('service_account.json')
+    drive = GoogleDrive(gauth)
+
     drive = GoogleDrive(gauth)
     folder_id = "10J-E4RcBJFfrdcqU_UAWask8BKTZ5Mw2"
     file_name = os.path.basename(file_path)
