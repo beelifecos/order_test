@@ -1,7 +1,5 @@
-PyDrive2
-selenium
-webdriver-manager
-openpyxl
-pandas
-requests
-deep-translator
+playwright==1.39.0
+pydrive2==1.10.1
+beautifulsoup4==4.12.2
+requests==2.31.0
+lxml==4.9.3
