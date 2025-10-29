@@ -255,5 +255,6 @@ def login_and_scrape(username, password):
     print("Scraping completed.")
 
 # --- Запуск парсера ---
-login_and_scrape("beelifecos","1983beelif")
+login_and_scrape("beelifecos", "1983beelif")
+
 
