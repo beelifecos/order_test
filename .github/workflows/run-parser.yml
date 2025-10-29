@@ -1,9 +1,12 @@
-name: Run StyleKorean Parser
+name: Run Python Script
 
 on:
+  push:
+    branches:
+      - main
   schedule:
-    - cron: "0 0 * * *"  # каждый день в 00:00 UTC (09:00 по Сеулу)
-  workflow_dispatch:      # позволяет запуск вручную
+    - cron: '0 * * * *'  # запускается каждый час
+  workflow_dispatch:      # запуск вручную
 
 jobs:
   run:
@@ -23,6 +26,5 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run parser
-        run: |
-          python parser_test.py
+      - name: Run script
+        run: python parser_test.py
