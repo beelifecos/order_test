@@ -1,4 +1,6 @@
+pydrive
 selenium
-webdriver-manager
 openpyxl
-beautifulsoup4
+pandas
+requests
+deep-translator
